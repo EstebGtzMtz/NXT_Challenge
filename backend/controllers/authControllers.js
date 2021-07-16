@@ -1,6 +1,5 @@
 const User = require('../models/User');
 
-
 exports.signupPost = async(req, res) => {
     const { name, email, password } = req.body;
 
@@ -9,4 +8,9 @@ exports.signupPost = async(req, res) => {
 
         res.status(200).json({ ok: true, user });
     });
+}
+
+exports.logoutGet = (req, res) => {
+    req.logout();
+    res.status(200).json({ ok: true, msg: 'Logged out' });
 }

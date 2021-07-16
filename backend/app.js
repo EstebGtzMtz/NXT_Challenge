@@ -15,7 +15,9 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 const auth = require('./routes/auth')
-app.use('/', auth)
+const toDo = require('./routes/toDo');
+app.use('/', auth);
+app.use('/', toDo);
 
 mongoose.connect(process.env.DB, { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true, useFindAndModify: false }, (err, res) => {
     if (err) throw err;

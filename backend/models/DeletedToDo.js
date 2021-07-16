@@ -1,11 +1,9 @@
 const { Schema, model } = require('mongoose');
 
-const toDoSchema = new Schema({
+const deletedToDoSchema = new Schema({
     name: {
         type: String,
-        required: true,
-        unique: true,
-        trim: true
+        unique: false
     },
     description: {
         type: String,
@@ -14,8 +12,7 @@ const toDoSchema = new Schema({
     },
     status: {
         type: String,
-        enum: ['toDo', 'completed', 'aborted'],
-        default: 'toDo'
+        default: 'aborted'
     },
     sunrise: {
         type: String,
@@ -24,14 +21,10 @@ const toDoSchema = new Schema({
     sunset: {
         type: String,
         default: '1618333901'
-    },
-    userId: {
-        type: Schema.Types.ObjectId,
-        ref: 'User'
     }
 }, {
     timestamps: true,
     versionKey: false
 })
 
-module.exports = model('ToDo', toDoSchema);
+module.exports = model('DeletedToDo', deletedToDoSchema);
