@@ -1,14 +1,19 @@
 const ToDo = require('../models/ToDo');
 const DeletedToDo = require('../models/DeletedToDo');
+const { getSunriseSunsetFromOpenWeatherAPI } = require('../helpers/openWeatherGet')
 
 exports.newTasksPost = async(req, res) => {
     const { name, description = 'No description available' } = req.body;
     const { _id } = req.user;
 
+    const { convertedSunrise: sunrise, convertedSunset: sunset } = await getSunriseSunsetFromOpenWeatherAPI();
+
     const task = new ToDo({
         name,
         description,
-        userId: _id
+        userId: _id,
+        sunrise,
+        sunset
     });
 
     try {
