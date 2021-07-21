@@ -41,7 +41,7 @@ const SignupForm = ({ setLogin }) => {
 
     return (
         <SignupFormContainer>
-            <h1 onClick={()=>setLogin(true)}>back to Login</h1>
+            <h1 onClick={()=>setLogin(true)}>Back to Login</h1>
             <form onSubmit={handleSubmit} className="form-style">
                 <div className="text-field">
                     <label>Nombre:</label>

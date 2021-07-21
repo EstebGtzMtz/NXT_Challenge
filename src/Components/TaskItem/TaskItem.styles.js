@@ -1,8 +1,8 @@
 import styled from "styled-components";
 
 export const TodoItem = styled.div `
-    min-width: 13%;
-    max-width:13%;
+    min-width: 15%;
+    max-width:16%;
     max-heigth: 10rem;
     min-height: 10rem;
     margin: 2px 0 2px 0;
@@ -53,5 +53,21 @@ export const TodoItem = styled.div `
             border-radius: 5px;
             color: white;
         }
+    }
+    
+    @media screen and (max-width: 1440px) {
+        min-width: 15%;
+        max-width:16%;
+        max-heigth: 10rem;
+        min-height: 10rem;
+    }
+    @media screen and (max-width: 1025px) {
+        min-width: 25%;
+    }
+    @media screen and (max-width: 769px) {
+        min-width: 90%;
+    }
+    @media screen and (max-width: 426px) {
+        min-width: 90%;
     }
 `

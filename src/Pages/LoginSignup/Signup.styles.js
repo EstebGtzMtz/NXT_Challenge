@@ -9,7 +9,7 @@ export const SignUpPage = styled.div `
     align-items: center;
     justify-content: center;
     flex-direction: row;
-
+    
     .signup-container{
         width:60%;
         height: 80vh;
@@ -37,18 +37,19 @@ export const SignUpPage = styled.div `
             width: 40%;
             height: 100%;
         }
+        
     }
 
-    @media (max-width: 576px) {
+    @media screen and (max-width: 769px) {
         .signup-container{
             width: 90%;
-        }
-        .signup-form{
-            display: flex;
-            justify-content: center;
-            width: 40%;
-            height: 100%;
+            height: 70vh;
+            .image-and-info{
+                display: none;
+            }
+            .signup-form{
+                width: 100%;
+            }
         }
     }
-
 `
