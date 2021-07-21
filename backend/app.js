@@ -5,6 +5,7 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 // const session = require('express-session');
 const passport = require('./config/passport');
+const cors = require('cors');
 
 const app = express();
 
@@ -13,6 +14,10 @@ app.use(bodyParser.json());
 
 app.use(passport.initialize());
 app.use(passport.session());
+
+app.use(cors({
+    credentials: false
+}));
 
 const auth = require('./routes/auth')
 const toDo = require('./routes/toDo');
@@ -26,7 +31,7 @@ mongoose.connect(process.env.DB, { useNewUrlParser: true, useUnifiedTopology: tr
 });
 
 app.listen(process.env.PORT, () => {
-    console.log(`Server online, ready to work`)
+    console.log(`Server online on port ${process.env.PORT} ready to work `)
 });
 
 module.exports = app;
