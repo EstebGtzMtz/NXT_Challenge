@@ -49,3 +49,11 @@ exports.deleteToDo = async(req, res) => {
         res.status(400).json({ ok: false, error })
     }
 }
+
+exports.completedTask = async(req, res) => {
+    const { _id } = req.params
+
+    await ToDo.findByIdAndUpdate(_id, { status: 'completed' }, { new: true });
+    res.status(200).json({ ok: true, msg: 'Task completed' })
+
+}

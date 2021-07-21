@@ -16,7 +16,8 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 app.use(cors({
-    credentials: false
+    credentials: true,
+    origin: [process.env.FRONTENDPOINT]
 }));
 
 const auth = require('./routes/auth')
