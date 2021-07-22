@@ -32,7 +32,7 @@ First of all you can login, if don't have an account, you can create one.
 
 ## Dashboard
 
-In the dashboard you are able to create your own task to do (card in blue color) an marked as a completed (card in green color), aborted(card in orange color) o delete the task
+In the dashboard you are able to create your own task to do (card in blue color) and marked as a completed (card in green color), aborted(card in orange color) o delete the task
 ![Dashboard example](https://res.cloudinary.com/dptmtx6uu/image/upload/v1626978330/Screenshot_from_2021-07-22_13-25-11.png)
 
 Also there's a cron that executes every 5 min, if the task is not marked as a completed, automatically update the task to aborted.
