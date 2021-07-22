@@ -37,21 +37,45 @@ export const TodoItem = styled.div `
         padding: 5% 5%;
         width 90%;
     }
+
+    .aborted-container{
+        h1{
+            font-weight: bold;
+        }
+        border:4px solid #DD6B21;
+        background-color: rgb(221,107,33, 0.5);
+        border-radius: 10px;
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        justify-content:space-evenly;
+        padding: 5% 5%;
+        width 90%;
+    }
     .action-buttons{
         display: flex;
-        flex-direction: row;
+        flex-direction: column;
         justify-content:space-between;
         .complete{
-            width: 45%;
+            width: 100%;
             background-color: #38A169;
             border-radius: 5px;
             color: white;
+            margin-top: .5rem;
+        }
+        .aborted{
+            width: 100%;
+            background-color: #DD6B21;
+            border-radius: 5px;
+            color: white;
+            margin-top: .5rem;
         }
         .delete{
-            width: 45%;
+            width: 100%;
             background-color: #E53E3E;
             border-radius: 5px;
             color: white;
+            margin-top: .5rem;
         }
     }
     

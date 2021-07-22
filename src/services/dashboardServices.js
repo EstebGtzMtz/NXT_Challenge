@@ -22,3 +22,7 @@ export const deleteTask = async(taskID, token) => {
 export const taskToComplete = async(taskID, token) => {
     return await service.post(`${baseURL}/completedTask/${taskID}`, { headers: { token } });
 }
+
+export const taskAborted = async(taskID, token) => {
+    return await service.post(`${baseURL}/abortedTask/${taskID}`, { headers: { token } });
+}

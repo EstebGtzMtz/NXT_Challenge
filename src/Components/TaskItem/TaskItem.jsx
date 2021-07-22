@@ -3,7 +3,7 @@ import React from 'react';
 import { TodoItem } from './TaskItem.styles';
 import { useToast } from "@chakra-ui/react"
 
-import { deleteTask, taskToComplete } from '../../services/dashboardServices';
+import { deleteTask, taskToComplete, taskAborted } from '../../services/dashboardServices';
 
 const TaskItem = ({ toDo }) => {
     const toast = useToast();
@@ -12,7 +12,6 @@ const TaskItem = ({ toDo }) => {
     const handleDeleteTask = async () => {
         try {
             await deleteTask(toDo._id, token);
-            console.log(toDo._id, "este es el token", token)
             toast({
                 title: 'Task successfully deleted',
                 status: "success",
@@ -28,6 +27,7 @@ const TaskItem = ({ toDo }) => {
             });
         }
     }
+
     const handleCompleteTask = async () => {
         if (token !== null) {
             try {
@@ -50,9 +50,38 @@ const TaskItem = ({ toDo }) => {
         }
     }
 
+    const handleAbortedTask = async () => {
+        try {
+            const { data: { msg } } = await taskAborted(toDo._id, token);
+            toast({
+                title: msg,
+                status: "success",
+                duration: 3000,
+                isClosable: true,
+            });
+        } catch (error) {
+            toast({
+                title: "something went wrong",
+                status: "error",
+                duration: 3000,
+                isClosable: true,
+            });
+        }
+    }
+
+    const nameOfClass = (status) => {
+        if (status === 'toDo')
+            return 'toDo-container'
+
+        if (status === 'aborted')
+            return 'aborted-container'
+
+        return 'completed-container'
+    }
+
     return (
         <TodoItem>
-            <div className={toDo.status === 'toDo' ? 'toDo-container' : 'completed-container'}>
+            <div className={nameOfClass(toDo.status)}>
                 <h1>{toDo.name.toUpperCase()}</h1>
                 <h4>{toDo.description}</h4>
                 <h3>sunrise: {toDo.sunrise} hrs</h3>
@@ -60,7 +89,10 @@ const TaskItem = ({ toDo }) => {
                 <div className='action-buttons'>
                     {
                         toDo.status === 'toDo' && (
-                            <button onClick={handleCompleteTask} className='complete'>Complete</button>
+                            <div>
+                                <button onClick={handleCompleteTask} className='complete'>Complete</button>
+                                <button onClick={handleAbortedTask} className='aborted'>Abort</button>
+                            </div>
                         )
                     }
                     <button onClick={handleDeleteTask} className='delete'>Delete</button>
