@@ -8,7 +8,12 @@ To run this project you can run:
 **npm install** or **npm i**
 also: 
 **yarn install**
+
+And in src > services > (both Files) Change the baseUrl to the localhost that you're using
+![BaseURL](https://res.cloudinary.com/dptmtx6uu/image/upload/v1626979976/WhatsApp_Image_2021-07-22_at_13.52.35.jpg)
+
 And that's all you need.
+
 
 
 ## Description
