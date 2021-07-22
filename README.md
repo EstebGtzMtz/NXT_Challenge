@@ -1,6 +1,13 @@
 # ToDo app with React!
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app)
 
+And usign:
+* Axios
+* styled-components
+* local-storage
+* react-router-dom
+* chakra-ui 
+
 
 # Get Started
 
